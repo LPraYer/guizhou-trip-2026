@@ -14,6 +14,7 @@
     --teal:#1f9e8f;          /* 荔波碧水 */
     --teal-soft:#e3f4f1;
     --gold:#e9a13b;          /* 苗寨灯火 */
+    --gold-deep:#b07a1e;
     --gold-soft:#fdf3e0;
     --red:#d2503c;           /* 酸汤红 */
     --red-soft:#fbeae7;
@@ -27,12 +28,12 @@
   html{scroll-behavior:smooth}
   body{
     font-family:'Noto Sans SC','PingFang SC',sans-serif;
-    background:var(--paper);
+    background:#f3eddc;
     color:var(--ink);
     line-height:1.75;
     text-wrap:pretty;
   }
-  /* 蜡染纹样：靛蓝菱格点阵 */
+  /* 蜡染纹样：靛蓝菱格点阵（深色底用） */
   .batik{
     background-image:
       radial-gradient(circle at 8px 8px, rgba(250,245,234,.55) 2.2px, transparent 2.6px),
@@ -42,42 +43,108 @@
   }
   .wrap{max-width:960px;margin:0 auto;padding:0 20px}
 
+  /* ============ 长卷背景（滚动联动） ============ */
+  .bg-stack{position:fixed;inset:0;z-index:-2;overflow:hidden;background:#f3eddc}
+  .bg-scene{
+    position:absolute;inset:-5%;background-size:cover;background-position:center;
+    opacity:0;transition:opacity 1.6s ease;will-change:opacity,transform;
+  }
+  .bg-scene.on{opacity:1}
+  /* 恒定薄纱：统一 6 幅画的明度与色调，保证过渡连贯 + 文字可读 */
+  .bg-veil{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,
+      rgba(250,245,234,.66) 0%,
+      rgba(250,245,234,.30) 20%,
+      rgba(250,245,234,.24) 50%,
+      rgba(250,245,234,.42) 78%,
+      rgba(250,245,234,.85) 100%);
+  }
+  /* 氛围粒子层 */
+  .fx-layer{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+  .fx-layer i{
+    position:absolute;left:var(--x);border-radius:50%;opacity:0;
+    width:var(--s);height:var(--s);
+    animation:fxFloat var(--d) linear var(--dl) infinite;
+  }
+  @keyframes fxFloat{
+    0%{transform:translateY(105vh);opacity:0}
+    12%{opacity:var(--o,.5)}
+    88%{opacity:var(--o,.5)}
+    100%{transform:translateY(-8vh);opacity:0}
+  }
+  @keyframes fxTwinkle{
+    0%,100%{opacity:0;transform:scale(.6)}
+    50%{opacity:var(--o,.9);transform:scale(1)}
+  }
+  @keyframes fxDrift{
+    0%{transform:translate(0,-6vh) rotate(0deg);opacity:0}
+    10%{opacity:var(--o,.7)}
+    90%{opacity:var(--o,.7)}
+    100%{transform:translate(12vw,105vh) rotate(300deg);opacity:0}
+  }
+  /* 各场景的粒子性格 */
+  body[data-scene="qianling"] .fx-layer i,
+  body[data-scene="huangguoshu"] .fx-layer i{
+    background:radial-gradient(circle,rgba(255,255,255,.95),rgba(255,255,255,0) 70%);
+    filter:blur(1px);
+  }
+  body[data-scene="qingyan"] .fx-layer i{
+    background:radial-gradient(circle,#e8b45a,#c98a2e);
+    border-radius:60% 40% 60% 40%;animation-name:fxDrift;
+  }
+  body[data-scene="tianyan"] .fx-layer i{
+    top:var(--x2);background:#fff;
+    box-shadow:0 0 6px 1px rgba(255,255,255,.85);
+    animation-name:fxTwinkle;
+  }
+  body[data-scene="xiaoqikong"] .fx-layer i{
+    background:radial-gradient(circle,#bfeee6,#1f9e8f);
+    box-shadow:0 0 8px 2px rgba(31,158,143,.35);
+  }
+  body[data-scene="miaozhai"] .fx-layer i{
+    background:radial-gradient(circle,#ffe3a3,#e9a13b);
+    box-shadow:0 0 10px 3px rgba(233,161,59,.55);
+  }
+
   /* ============ HERO ============ */
   header.hero{
-    background:linear-gradient(160deg,var(--indigo-deep) 0%,var(--indigo) 60%,#27508c 100%);
-    color:var(--paper);
-    padding:72px 0 0;
+    padding:84px 0 0;
     position:relative;
     overflow:hidden;
   }
   .hero-inner{text-align:center;padding:0 20px}
   .hero .kicker{
     display:inline-block;letter-spacing:.35em;font-size:13px;
-    border:1px solid rgba(250,245,234,.45);border-radius:999px;
-    padding:5px 18px 5px 22px;margin-bottom:26px;color:#f0e6cd;
+    border:1px solid rgba(29,58,110,.4);border-radius:999px;
+    padding:5px 18px 5px 22px;margin-bottom:26px;color:var(--indigo);
+    background:rgba(250,245,234,.45);backdrop-filter:blur(3px);
   }
   .hero h1{
     font-family:'ZCOOL KuaiLe','Noto Serif SC',serif;
-    font-size:clamp(40px,7vw,72px);
-    line-height:1.2;letter-spacing:.04em;
+    font-size:clamp(44px,7.5vw,80px);
+    line-height:1.2;letter-spacing:.04em;color:var(--indigo-deep);
+    text-shadow:0 2px 18px rgba(250,245,234,.8);
   }
-  .hero h1 .accent{color:var(--gold)}
+  .hero h1 .accent{color:var(--gold-deep)}
   .hero .sub{
-    margin:18px auto 0;max-width:620px;color:#cdd9ee;font-size:clamp(15px,2.4vw,18px);
+    margin:18px auto 0;max-width:620px;color:#4c4638;font-size:clamp(15px,2.4vw,18px);
+    text-shadow:0 1px 10px rgba(250,245,234,.9);
   }
   .hero .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:30px 0 44px}
   .chip{
-    background:rgba(250,245,234,.12);border:1px solid rgba(250,245,234,.28);
-    border-radius:999px;padding:7px 18px;font-size:14px;color:#f4ecd8;
+    background:rgba(250,245,234,.62);border:1px solid rgba(29,58,110,.22);
+    border-radius:999px;padding:7px 18px;font-size:14px;color:var(--indigo-deep);
     backdrop-filter:blur(4px);
   }
-  .chip b{color:var(--gold);font-weight:700}
+  .chip b{color:var(--gold-deep);font-weight:700}
 
   /* 路线地图 */
   .map-card{
-    background:var(--paper);border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+    background:rgba(250,245,234,.92);border-radius:var(--radius-lg) var(--radius-lg) 0 0;
     margin:0 auto;max-width:960px;padding:34px 20px 8px;position:relative;
-    box-shadow:0 -18px 50px rgba(10,20,40,.35);
+    box-shadow:0 -18px 50px rgba(19,41,78,.18);
+    backdrop-filter:blur(6px);
   }
   .map-title{
     font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(19px,3vw,24px);
@@ -96,10 +163,11 @@
   .sec-head{text-align:center;margin-bottom:34px}
   .sec-head .cn{
     font-family:'Noto Serif SC',serif;font-weight:900;
-    font-size:clamp(24px,4.4vw,34px);color:var(--indigo);
+    font-size:clamp(24px,4.4vw,34px);color:var(--indigo-deep);
+    text-shadow:0 1px 12px rgba(250,245,234,.85);
   }
   .sec-head .en{
-    font-size:12px;letter-spacing:.4em;color:var(--teal);
+    font-size:12px;letter-spacing:.4em;color:#0f6e63;
     text-transform:uppercase;margin-top:6px;
   }
   .sec-head .bar{
@@ -111,9 +179,10 @@
   .urgent-grid{display:grid;gap:14px}
   .urgent-item{
     display:flex;gap:16px;align-items:flex-start;
-    background:#fff;border-radius:var(--radius-md);
+    background:rgba(255,255,255,.88);border-radius:var(--radius-md);
     padding:18px 20px;border:1.5px solid var(--red-soft);
-    box-shadow:0 4px 18px rgba(210,80,60,.07);
+    box-shadow:0 4px 18px rgba(210,80,60,.08);
+    backdrop-filter:blur(6px);
   }
   .urgent-item .date{
     flex:none;text-align:center;background:var(--red);color:#fff;
@@ -128,6 +197,7 @@
   .urgent-banner{
     margin-top:18px;background:var(--red);color:#fff;border-radius:var(--radius-md);
     padding:14px 22px;font-size:15px;text-align:center;
+    box-shadow:0 6px 22px rgba(210,80,60,.3);
   }
   .urgent-banner b{color:#ffe08a}
 
@@ -153,13 +223,15 @@
   .day.phase-gold .dot{border-color:var(--gold)}
   .day.phase-red .dot{border-color:var(--red)}
   .card{
-    background:#fff;border-radius:var(--radius-lg);
+    background:rgba(250,245,234,.88);
+    border-radius:var(--radius-lg);
     padding:24px 26px 20px;
-    box-shadow:0 8px 30px rgba(29,58,110,.09);
-    border:1px solid rgba(29,58,110,.08);
+    box-shadow:0 10px 34px rgba(19,41,78,.13);
+    border:1px solid rgba(29,58,110,.12);
+    backdrop-filter:blur(8px);
     transition:transform .25s ease, box-shadow .25s ease;
   }
-  .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(29,58,110,.15)}
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(19,41,78,.2)}
   .card .topline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
   .dnum{
     font-family:'ZCOOL KuaiLe',cursive;font-size:15px;color:#fff;
@@ -182,16 +254,16 @@
     border-radius:50%;background:var(--gold);
   }
   .card .kid{
-    margin-top:14px;background:var(--teal-soft);border-radius:var(--radius-md);
+    margin-top:14px;background:rgba(227,244,241,.9);border-radius:var(--radius-md);
     padding:11px 16px;font-size:14px;color:#0f5a51;
   }
   .card .kid b{color:#0a4a43}
   .card .warn{
-    margin-top:10px;background:var(--red-soft);border-radius:var(--radius-md);
+    margin-top:10px;background:rgba(251,234,231,.92);border-radius:var(--radius-md);
     padding:10px 16px;font-size:13.5px;color:#8f2f20;
   }
   .card .opt{
-    margin-top:10px;background:var(--gold-soft);border:1px dashed #e5c37f;border-radius:var(--radius-md);
+    margin-top:10px;background:rgba(253,243,224,.92);border:1px dashed #e5c37f;border-radius:var(--radius-md);
     padding:10px 16px;font-size:13.5px;color:#7c5410;
   }
   .card .stay{
@@ -251,9 +323,10 @@
   /* ============ 美食 ============ */
   .food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
   .food{
-    background:#fff;border-radius:var(--radius-md);overflow:hidden;
-    border:1px solid rgba(29,58,110,.08);box-shadow:0 5px 18px rgba(29,58,110,.06);
+    background:rgba(255,255,255,.9);border-radius:var(--radius-md);overflow:hidden;
+    border:1px solid rgba(29,58,110,.1);box-shadow:0 5px 18px rgba(19,41,78,.09);
     transition:transform .2s ease;display:flex;flex-direction:column;
+    backdrop-filter:blur(6px);
   }
   .food:hover{transform:translateY(-3px)}
   .food img{width:100%;height:130px;object-fit:cover;display:block}
@@ -266,15 +339,16 @@
   }
   .food-tip{
     margin-top:18px;background:var(--indigo);color:#dfe8f7;border-radius:var(--radius-md);
-    padding:16px 22px;font-size:14px;
+    padding:16px 22px;font-size:14px;box-shadow:0 8px 26px rgba(19,41,78,.3);
   }
   .food-tip b{color:var(--gold)}
 
   /* ============ 装备 & 预算 ============ */
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   .panel{
-    background:#fff;border-radius:var(--radius-lg);padding:26px 28px;
-    border:1px solid rgba(29,58,110,.08);box-shadow:0 8px 30px rgba(29,58,110,.08);
+    background:rgba(250,245,234,.9);border-radius:var(--radius-lg);padding:26px 28px;
+    border:1px solid rgba(29,58,110,.12);box-shadow:0 10px 34px rgba(19,41,78,.12);
+    backdrop-filter:blur(8px);
   }
   .panel h3{
     font-family:'Noto Serif SC',serif;font-weight:900;color:var(--indigo);
@@ -289,7 +363,7 @@
   .budget-row{margin-bottom:14px}
   .budget-row .lbl{display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px}
   .budget-row .lbl b{color:var(--indigo)}
-  .budget-row .bar{height:10px;border-radius:5px;background:#f0ead9;overflow:hidden}
+  .budget-row .bar{height:10px;border-radius:5px;background:#efe8d4;overflow:hidden}
   .budget-row .bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--teal),var(--gold))}
   .budget-total{
     margin-top:16px;text-align:center;background:var(--gold-soft);
@@ -302,12 +376,17 @@
   footer{
     margin-top:64px;background:var(--indigo-deep);color:#b9c6de;
     padding:34px 20px 44px;text-align:center;font-size:13px;
+    box-shadow:0 -14px 40px rgba(19,41,78,.25);
   }
   footer .f-title{
     font-family:'ZCOOL KuaiLe',cursive;font-size:22px;color:var(--paper);
     margin-bottom:8px;
   }
 
+  @media (prefers-reduced-motion:reduce){
+    .fx-layer{display:none}
+    .bg-scene{transition:none}
+  }
   @media (max-width:760px){
     .timeline::before{left:14px}
     .day{width:100%;padding-left:42px;margin-bottom:26px}
@@ -318,10 +397,22 @@
   }
 </style>
 </head>
-<body>
+<body data-scene="qianling">
+
+<!-- 长卷背景：6 幅同源水墨蜡染画，随滚动淡入淡出 -->
+<div class="bg-stack" aria-hidden="true">
+  <div class="bg-scene on" data-name="qianling" style="background-image:url('assets/bg/bg-qianling.jpg')"></div>
+  <div class="bg-scene" data-name="qingyan" style="background-image:url('assets/bg/bg-qingyan.jpg')"></div>
+  <div class="bg-scene" data-name="huangguoshu" style="background-image:url('assets/bg/bg-huangguoshu.jpg')"></div>
+  <div class="bg-scene" data-name="tianyan" style="background-image:url('assets/bg/bg-tianyan.jpg')"></div>
+  <div class="bg-scene" data-name="xiaoqikong" style="background-image:url('assets/bg/bg-xiaoqikong.jpg')"></div>
+  <div class="bg-scene" data-name="miaozhai" style="background-image:url('assets/bg/bg-miaozhai.jpg')"></div>
+  <div class="bg-veil"></div>
+</div>
+<div class="fx-layer" aria-hidden="true" id="fxLayer"></div>
 
 <!-- ================= HERO ================= -->
-<header class="hero batik">
+<header class="hero" data-scene="qianling">
   <div class="hero-inner">
     <span class="kicker">2026 中秋 × 国庆 · 一家三口</span>
     <h1>「<span class="accent">黔</span>」行记</h1>
@@ -337,7 +428,7 @@
   <!-- 路线地图 -->
   <div class="map-card">
     <div class="map-title">环 线 路 线 图</div>
-    <div class="map-note">贵阳进、凯里出，一条线不走回头路 · 图片可左右滑动，视频点击即播</div>
+    <div class="map-note">贵阳进、凯里出，一条线不走回头路 · 图片可左右滑动，视频点击即播 · 向下滚动，画卷随行程流转</div>
     <svg class="map-svg" viewBox="0 0 860 400" role="img" aria-label="贵州环线示意图">
       <!-- 山峦背景 -->
       <path d="M0,360 L90,300 L170,345 L260,285 L350,340 L450,290 L560,350 L650,295 L760,345 L860,305 L860,400 L0,400 Z" fill="#e8edf7"/>
@@ -396,7 +487,7 @@
 </header>
 
 <!-- ================= 抢票 ================= -->
-<section>
+<section data-scene="qianling">
   <div class="wrap">
     <div class="sec-head">
       <div class="cn">先抢票，再出发</div>
@@ -468,7 +559,7 @@
     </div>
     <div class="timeline">
 
-      <div class="day phase-gold">
+      <div class="day phase-gold" data-scene="qianling">
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
@@ -510,7 +601,7 @@
         </div>
       </div>
 
-      <div class="day phase-gold">
+      <div class="day phase-gold" data-scene="qingyan">
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
@@ -547,7 +638,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" data-scene="huangguoshu">
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
@@ -576,7 +667,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" data-scene="huangguoshu">
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
@@ -620,7 +711,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" data-scene="tianyan">
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
@@ -665,7 +756,7 @@
         </div>
       </div>
 
-      <div class="day">
+      <div class="day" data-scene="xiaoqikong">
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
@@ -704,7 +795,7 @@
         </div>
       </div>
 
-      <div class="day phase-red">
+      <div class="day phase-red" data-scene="miaozhai">
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
@@ -752,7 +843,7 @@
         </div>
       </div>
 
-      <div class="day phase-red">
+      <div class="day phase-red" data-scene="miaozhai">
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
@@ -779,7 +870,7 @@
 </section>
 
 <!-- ================= 美食 ================= -->
-<section>
+<section data-scene="qingyan">
   <div class="wrap">
     <div class="sec-head">
       <div class="cn">娃能吃的 · 不辣美食清单</div>
@@ -825,7 +916,7 @@
 </section>
 
 <!-- ================= 装备 & 预算 ================= -->
-<section>
+<section data-scene="xiaoqikong">
   <div class="wrap">
     <div class="sec-head">
       <div class="cn">装备与预算</div>
@@ -861,12 +952,60 @@
 
 <footer class="batik">
   <div class="f-title">「黔」行记</div>
-  <p>票价与限流政策来自 2026 年 9 月检索的各景区官方公开信息，出行前请以<br>「安旅通」「一码游贵州」「贵客荟」「中国天眼」等官方小程序实时公示为准。<br>景点与美食图片来自百度百科公开资料，视频来自哔哩哔哩（点击在本页内嵌播放，需联网）。<br>住宿名称为公开平台口碑参考，价格与房态请以预订平台实时为准。</p>
+  <p>票价与限流政策来自 2026 年 9 月检索的各景区官方公开信息，出行前请以<br>「安旅通」「一码游贵州」「贵客荟」「中国天眼」等官方小程序实时公示为准。<br>长卷背景为 AI 生成的水墨 × 苗族蜡染风格画作；景点与美食实拍图来自百度百科公开资料；<br>视频来自哔哩哔哩（点击在本页内嵌播放，需联网）。住宿名称为公开平台口碑参考，以预订平台实时为准。</p>
   <p style="margin-top:14px;color:#8fa1c2">为一家三口定制 · 祝旅途愉快 🏞</p>
 </footer>
 
 <script>
-/* 图片轮播：滑动 + 圆钮 + 小圆点 */
+/* ========== 长卷场景切换：滚动到哪里，画卷就流转到哪里 ========== */
+var sceneEls = document.querySelectorAll('.bg-scene');
+function setScene(name){
+  if (document.body.getAttribute('data-scene') === name) return;
+  document.body.setAttribute('data-scene', name);
+  sceneEls.forEach(function(d){ d.classList.toggle('on', d.getAttribute('data-name') === name); });
+}
+/* 支持 ?scene=xxx 强制指定场景（调试/分享用） */
+var forced = (location.search.match(/scene=(\w+)/) || location.hash.match(/scene=(\w+)/) || [])[1];
+if (forced){
+  setScene(forced);
+} else {
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) setScene(e.target.getAttribute('data-scene'));
+    });
+  }, {rootMargin: '-42% 0px -42% 0px', threshold: 0});
+  document.querySelectorAll('[data-scene]').forEach(function(el){ io.observe(el); });
+}
+
+/* ========== 轻微视差：画卷随滚动缓缓上移 ========== */
+var ticking = false;
+window.addEventListener('scroll', function(){
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    var y = window.scrollY * 0.035;
+    sceneEls.forEach(function(d){ d.style.transform = 'translateY(' + y + 'px)'; });
+    ticking = false;
+  });
+}, {passive: true});
+
+/* ========== 氛围粒子：每个场景有自己的「天气」 ========== */
+(function(){
+  var layer = document.getElementById('fxLayer');
+  var html = '';
+  for (var i = 0; i < 18; i++){
+    var x = (Math.random() * 100).toFixed(1);
+    var top = (Math.random() * 55).toFixed(1);       /* 星辰模式用的固定高度 */
+    var s = (Math.random() * 5 + 2.5).toFixed(1);
+    var d = (Math.random() * 14 + 10).toFixed(1);
+    var dl = (-Math.random() * 20).toFixed(1);
+    var o = (Math.random() * 0.4 + 0.3).toFixed(2);
+    html += '<i style="--x:' + x + 'vw;--x2:' + top + 'vh;--s:' + s + 'px;--d:' + d + 's;--dl:' + dl + 's;--o:' + o + '"></i>';
+  }
+  layer.innerHTML = html;
+})();
+
+/* ========== 图片轮播：滑动 + 圆钮 + 小圆点 ========== */
 document.querySelectorAll('[data-carousel]').forEach(function(box){
   var track = box.querySelector('.car-track');
   var slides = track.children.length;
@@ -881,7 +1020,7 @@ document.querySelectorAll('[data-carousel]').forEach(function(box){
   for (var i = 0; i < slides; i++){
     var d = document.createElement('i');
     if (i === 0) d.className = 'on';
-    (function(idx){ d.addEventListener('click', function(){ go(idx); }); })(i);
+    (function(idx, dot){ dot.addEventListener('click', function(){ go(idx); }); })(i, d);
     dots.appendChild(d);
   }
   box.appendChild(prev); box.appendChild(next); box.appendChild(dots);
@@ -899,9 +1038,9 @@ document.querySelectorAll('[data-carousel]').forEach(function(box){
   }, {passive: true});
 });
 
-/* 视频：点击封面才加载 B 站内嵌播放器 */
+/* ========== 视频：点击封面才加载 B 站内嵌播放器 ========== */
 document.querySelectorAll('.video-box').forEach(function(box){
-  var bvid = box.getAttribute('data-bvid') || (box.querySelector('[data-bvid]')||{}).getAttribute && box.querySelector('[data-bvid]').getAttribute('data-bvid');
+  var bvid = box.getAttribute('data-bvid') || (box.querySelector('[data-bvid]') ? box.querySelector('[data-bvid]').getAttribute('data-bvid') : null);
   var cover = box.querySelector('.video-cover');
   if (!bvid || !cover) return;
   cover.addEventListener('click', function(e){
