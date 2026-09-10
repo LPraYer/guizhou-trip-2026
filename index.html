@@ -93,6 +93,11 @@
     background:radial-gradient(circle,#e8b45a,#c98a2e);
     border-radius:60% 40% 60% 40%;animation-name:fxDrift;
   }
+  body[data-scene="zhijindong"] .fx-layer i{
+    background:radial-gradient(circle,#ffe9b8,#d9a24a);
+    box-shadow:0 0 8px 2px rgba(217,162,74,.5);
+    filter:blur(.5px);
+  }
   body[data-scene="tianyan"] .fx-layer i{
     top:var(--x2);background:#fff;
     box-shadow:0 0 6px 1px rgba(255,255,255,.85);
@@ -520,6 +525,7 @@
 <div class="bg-stack" aria-hidden="true">
   <div class="bg-scene on" data-name="qianling" style="background-image:url('assets/bg/bg-qianling.jpg')"></div>
   <div class="bg-scene" data-name="qingyan" style="background-image:url('assets/bg/bg-qingyan.jpg')"></div>
+  <div class="bg-scene" data-name="zhijindong" style="background-image:url('assets/bg/bg-zhijindong.jpg')"></div>
   <div class="bg-scene" data-name="huangguoshu" style="background-image:url('assets/bg/bg-huangguoshu.jpg')"></div>
   <div class="bg-scene" data-name="tianyan" style="background-image:url('assets/bg/bg-tianyan.jpg')"></div>
   <div class="bg-scene" data-name="xiaoqikong" style="background-image:url('assets/bg/bg-xiaoqikong.jpg')"></div>
@@ -533,7 +539,7 @@
   <div class="hero-inner">
     <span class="kicker">2026 中秋 × 国庆 · 一家三口</span>
     <h1>「<span class="accent">黔</span>」行记<span class="seal">自在黔行</span></h1>
-    <p class="sub">带上 10 岁的小探险家，从北京的夜班动卧出发 ——<br>瀑布、天眼、碧水、苗寨灯火，8 天慢游贵州</p>
+    <p class="sub">带上 10 岁的小探险家，中秋清晨从北京直飞贵阳 ——<br>溶洞、瀑布、天眼、碧水、苗寨灯火，8 天慢游贵州</p>
     <div class="chips">
       <span class="chip">🗓 <b>9.25 – 10.2</b> 共 8 天</span>
       <span class="chip">🚗 贵阳进 · <b>凯里出</b> 不回头</span>
@@ -548,9 +554,9 @@
     <div class="map-note">贵阳进、凯里出，一条线不走回头路 · 图片可左右滑动，视频点击即播 · 向下滚动，画卷随行程流转</div>
     <div class="map-art">
       <img src="assets/bg/map-route.jpg" alt="贵州环线手绘山水地图：贵阳、黄果树、平塘天眼、荔波小七孔、西江苗寨">
-      <span class="map-lbl" style="left:52%;top:14%">贵阳<small>D1–D2 · 黔灵山 / 青岩</small></span>
-      <span class="map-lbl" style="left:13%;top:26%">黄果树<small>D3–D4 · 大瀑布</small></span>
-      <span class="map-lbl" style="left:23%;top:64%">平塘天眼<small>D4–D5 · FAST</small></span>
+      <span class="map-lbl" style="left:52%;top:14%">贵阳<small>D1–D2 · 黔灵山 / 织金洞</small></span>
+      <span class="map-lbl" style="left:13%;top:26%">黄果树<small>D2–D3 · 大瀑布</small></span>
+      <span class="map-lbl" style="left:23%;top:64%">平塘天眼<small>D4 · FAST</small></span>
       <span class="map-lbl" style="left:63%;top:72%">荔波小七孔<small>D5–D6</small></span>
       <span class="map-lbl red" style="left:84%;top:38%">西江苗寨<small>D7 · 万家灯火</small></span>
     </div>
@@ -572,10 +578,17 @@
     </div>
     <div class="urgent-grid">
       <div class="urgent-item">
-        <div class="date"><b>9/10</b><span>今天！</span></div>
+        <div class="date"><b>即日</b><span>越快越好</span></div>
         <div>
-          <h4>抢 D939 动卧票（9/24 北京西 → 贵阳北）</h4>
-          <p>12306 提前 15 天预售，今天开售。晚约 19:35 发车、次日早约 7:51 到，动卧约 780 元/人。中秋前夜车票会秒光，开票即抢。</p>
+          <h4>订 9/25 早班机票（北京 → 贵阳）</h4>
+          <p>中秋当天出发，选 10 点前起飞的航班、中午抵达贵阳，下午正好玩黔灵山。节假日机票越晚越贵，尽早出票；两大一小留意儿童票规则。</p>
+        </div>
+      </div>
+      <div class="urgent-item soon">
+        <div class="date"><b>9/11</b><span>起</span></div>
+        <div>
+          <h4>「织金洞景区」公众号约门票（9/26 入园）</h4>
+          <p>实名分时预约、无线下窗口，提前 1–15 天可约。旺季门票 110 + 观光车 20 = 130 元/人，中小学生免门票只需观光车票。</p>
         </div>
       </div>
       <div class="urgent-item">
@@ -588,7 +601,7 @@
       <div class="urgent-item soon">
         <div class="date"><b>9/12</b><span>起</span></div>
         <div>
-          <h4>「安旅通」约黄果树门票 + 水帘洞时段</h4>
+          <h4>「安旅通」约黄果树门票 + 水帘洞时段（9/27 入园）</h4>
           <p>门票提前 1–15 天实名预约，每日限流 5 万；水帘洞单独限流、节假日提前 5–7 天抢。娃（6–17 岁）免门票，只买 50 元观光车。</p>
         </div>
       </div>
@@ -616,8 +629,8 @@
       <div class="urgent-item later">
         <div class="date"><b>9/28</b><span>前</span></div>
         <div>
-          <h4>天眼公众号预约（9/29）+ 订租车（9/27 取车）</h4>
-          <p>天眼至少提前 1 天实名预约；租车选 SUV，9/27 贵阳取、<b>10/2 凯里南还</b>（一嗨/神州等支持异地还车，下单时确认凯里南网点和异地还车费），并确认是否需要儿童安全座椅。</p>
+          <h4>天眼公众号预约（9/28 下午场）+ 订租车（9/26 取车）</h4>
+          <p>天眼至少提前 1 天实名预约；租车选 SUV，9/26 贵阳取、<b>10/2 凯里南还</b>（一嗨/神州等支持异地还车，下单时确认凯里南网点和异地还车费），并确认是否需要儿童安全座椅。</p>
         </div>
       </div>
     </div>
@@ -646,7 +659,7 @@
             <span class="tag gold">中秋节</span>
           </div>
           <h3>贵阳 · 黔灵山的猴子与熊猫</h3>
-          <div class="route">早 7:51 到贵阳北 → 酒店放行李 → 黔灵山公园 → 甲秀楼夜景</div>
+          <div class="route">早班机中午落地贵阳 → 酒店放行李 → 黔灵山公园 → 甲秀楼夜景</div>
 
           <div class="carousel" data-carousel>
             <div class="car-track">
@@ -656,7 +669,7 @@
           </div>
 
           <ul>
-            <li>动卧一夜好眠，上午休整，中午来碗肠旺面（娃可以点清汤版）</li>
+            <li>早班机中午抵达，午饭来碗肠旺面（娃可以点清汤版），稍作休整</li>
             <li>下午黔灵山公园（免费，需预约）：看半野生猕猴 + 动物园 + 熊猫馆，索道上山步行下山最省力</li>
             <li>傍晚甲秀楼看夜景，晚饭去青云路夜市或二七路小吃街</li>
           </ul>
@@ -669,72 +682,52 @@
             </a>
           </div>
 
-          <div class="stay"><span class="stay-tag">住哪里</span><b>贵阳 · 喷水池 / 大十字商圈</b>（连住 2 晚）
+          <div class="stay"><span class="stay-tag">住哪里</span><b>贵阳 · 喷水池 / 大十字商圈</b>（住 1 晚）
             <ul>
               <li>选地铁 1 号线沿线的连锁酒店（全季 / 亚朵 / 桔子等），打车到黔灵山约 15 分钟、到甲秀楼 10 分钟</li>
-              <li>商圈内吃饭选择多，落地第一天的不辣晚餐最好解决</li>
+              <li>商圈内吃饭选择多，落地第一天的不辣晚餐最好解决；明早取车出发也方便</li>
             </ul>
             <span class="price-note">价格为平季参考，中秋/国庆请以预订平台实时为准</span>
           </div>
         </div>
       </div>
 
-      <div class="day phase-gold" data-scene="qingyan">
+      <div class="day phase-gold" data-scene="zhijindong">
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
             <span class="dnum">D2</span>
             <span class="tag gray">9/26 周六</span>
             <span class="tag gold">中秋假期</span>
+            <span class="tag teal">🚗 取车出发</span>
           </div>
-          <h3>青岩古镇 + 花溪夜郎谷</h3>
-          <div class="route">贵阳南郊 40 分钟 → 青岩古镇 → 夜郎谷（相距 20 分钟）</div>
+          <h3>织金洞 · 地下天宫</h3>
+          <div class="route">贵阳取车 → 织金洞 约120km / 2h → 洞内约 3h → 傍晚赴黄果树 约130km / 2h</div>
 
           <div class="carousel" data-carousel>
             <div class="car-track">
-              <figure><img src="assets/img/qingyan-2.webp" alt="青岩古镇石阶牌坊" loading="lazy"><figcaption>青岩古镇 · 石板老街</figcaption></figure>
-              <figure><img src="assets/img/yelanggu-1.webp" alt="花溪夜郎谷石头城堡" loading="lazy"><figcaption>夜郎谷 · 石头王国</figcaption></figure>
+              <figure><img src="assets/img/zhijindong-1.webp" alt="织金洞银雨树" loading="lazy"><figcaption>织金洞 · 镇洞三宝之一</figcaption></figure>
+              <figure><img src="assets/img/zhijindong-2.webp" alt="织金洞霸王盔" loading="lazy"><figcaption>霸王盔 · 17 米高巨型钟乳</figcaption></figure>
             </div>
           </div>
 
           <ul>
-            <li>青岩古镇：600 年明清石板镇，看贵州第一位文状元赵以炯的故居（顺便给娃打个鸡血）</li>
-            <li>午饭就在古镇解决：状元蹄（卤猪脚）、糕粑稀饭、玫瑰糖、米豆腐</li>
-            <li>下午夜郎谷：艺术家 20 年垒出的石头王国，奇形怪状的石像特别戳孩子</li>
-            <li>晚上回贵阳早休息，明天开始自驾</li>
+            <li>上午在贵阳取车（SUV），驱车 2 小时到毕节织金洞 —— 《中国国家地理》评出的「中国最美旅游洞穴」榜首</li>
+            <li>洞内单向游线约 6.6km、走 2.5–3 小时：看镇洞三宝「银雨树」「霸王盔」「十万大山」，13 个大厅一个比一个震撼</li>
+            <li>下午出洞后驱车 2 小时到黄果树，住景区门口 —— 这样明天能赶最早场</li>
+            <li>晚饭安顺夺夺粉火锅，记得要微辣锅底</li>
           </ul>
-          <div class="kid">👧 <b>娃的美食日：</b>状元蹄软糯不辣、糕粑稀饭是甜的 —— 今天可能是娃全程吃得最欢的一天。</div>
+          <div class="kid">👧 <b>娃的地心探险：</b>洞内恒温 10–16°C，<b>一定要带薄外套</b>；台阶多且湿滑，牵好手、穿防滑鞋。洞内无信号、中途无厕所，进洞前解决好。</div>
+          <div class="warn">⚠️ 门票 110 + 观光车 20 = 130 元/人，<b>必须提前在「织金洞景区」公众号实名分时预约</b>（无线下窗口）；中小学生免门票，只买观光车票。</div>
 
-          <div class="video-box" data-bvid="BV1Ks411N7Vu">
-            <a class="video-cover" href="https://www.bilibili.com/video/BV1Ks411N7Vu" target="_blank" rel="noopener">
+          <div class="video-box" data-bvid="BV1KWHhe5EgU">
+            <a class="video-cover" href="https://www.bilibili.com/video/BV1KWHhe5EgU" target="_blank" rel="noopener">
               <span class="play">▶</span>
-              <span><span class="v-tit">青岩古镇漫游</span><br><span class="v-sub">600 年 5A 石板镇 · 约 10 分钟</span></span>
+              <span><span class="v-tit">织金洞旅行 VLOG</span><br><span class="v-sub">「织金洞好美一定要去！」· 约 10 分钟</span></span>
             </a>
           </div>
 
-          <div class="stay"><span class="stay-tag">住哪里</span><b>同 D1，贵阳连住不挪窝</b> —— 少收一次行李，娃的作息也更稳</div>
-        </div>
-      </div>
-
-      <div class="day" data-scene="huangguoshu">
-        <span class="dot"></span>
-        <div class="card">
-          <div class="topline">
-            <span class="dnum">D3</span>
-            <span class="tag gray">9/27 周日</span>
-            <span class="tag teal">🚗 取车出发</span>
-          </div>
-          <h3>黄果树 · 陡坡塘 + 天星桥</h3>
-          <div class="route">贵阳 → 黄果树 约130km / 2h，下午进景区玩两个点</div>
-          <ul>
-            <li>上午取车（SUV），中午前抵达，住景区游客中心附近</li>
-            <li>下午先玩陡坡塘瀑布：86 版《西游记》片尾取景地，约 2 小时</li>
-            <li>再玩天星桥下半程：银链坠潭瀑布是精华（上半程可跳过省体力）</li>
-            <li>晚饭安顺夺夺粉火锅，记得要微辣锅底</li>
-          </ul>
-          <div class="kid">👧 <b>娃的彩蛋：</b>告诉娃《西游记》片尾"你挑着担"那个瀑布就在眼前，让她找找师徒四人在哪走的。</div>
-          <div class="warn">⚠️ 门票已在「安旅通」约好（成人 160 + 观光车 50，娃免门票）。明天早场的大瀑布 + 水帘洞才是高潮。</div>
-          <div class="stay"><span class="stay-tag">住哪里</span><b>黄果树景区门口</b>，方便明早 7 点第一批进大瀑布
+          <div class="stay"><span class="stay-tag">住哪里</span><b>黄果树景区门口</b>（连住 2 晚），方便明早第一批进大瀑布
             <ul>
               <li><b>铭晟居</b>（约 ¥220 起）：新中式装修，自带亲子乐园休闲吧，带娃家庭的性价比之选</li>
               <li><b>丰玮大酒店</b>（约 ¥300 起）：距景区售票大厅仅 200 米，「出门即大门」的 C 位地段</li>
@@ -749,12 +742,12 @@
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
-            <span class="dnum">D4</span>
-            <span class="tag gray">9/28 周一</span>
-            <span class="tag teal">工作日 · 黄金日</span>
+            <span class="dnum">D3</span>
+            <span class="tag gray">9/27 周日</span>
+            <span class="tag gold">中秋假期 · 压轴</span>
           </div>
-          <h3>大瀑布 + 水帘洞 → 平塘天文小镇</h3>
-          <div class="route">7:00 早场进大瀑布 → 13:00 出发 → 平塘 约230km / 3h</div>
+          <h3>黄果树 · 大瀑布 + 水帘洞（全天）</h3>
+          <div class="route">7:30 第一批进大瀑布 → 水帘洞穿瀑 → 下午陡坡塘 + 天星桥</div>
 
           <div class="carousel" data-carousel>
             <div class="car-track">
@@ -764,12 +757,12 @@
           </div>
 
           <ul>
-            <li>全行程的黄金日：工作日 + 最早场 = 人最少的黄果树</li>
-            <li>大瀑布约 3 小时，重头戏是水帘洞 —— 从 77 米高的瀑布背后穿过去</li>
-            <li>洞内湿滑水雾大：穿防滑鞋、带雨衣（比雨伞管用）</li>
-            <li>午后驱车平塘天文小镇，晚上天气好可以肉眼观星</li>
+            <li>昨天已住到景区门口，今天 7:30 第一批进大瀑布 —— 节假日人少的唯一办法</li>
+            <li>重头戏是水帘洞：从 77 米高的瀑布背后穿过去，洞内湿滑水雾大，穿防滑鞋、带雨衣</li>
+            <li>中午出景区吃午饭回酒店歇一小时，下午再进：陡坡塘（86 版《西游记》片尾取景地）+ 天星桥下半程银链坠潭</li>
+            <li>门票已在「安旅通」约好（成人 160 + 观光车 50，娃免门票）；门票多日有效，分次进园没问题</li>
           </ul>
-          <div class="kid">👧 <b>娃的高光时刻：</b>站在瀑布"肚子"里往外看，水幕就在手边 —— 大概率是她回去写作文的素材。</div>
+          <div class="kid">👧 <b>娃的高光时刻：</b>站在瀑布"肚子"里往外看，水幕就在手边；再告诉她《西游记》片尾"你挑着担"那个瀑布就在眼前 —— 大概率是她回去写作文的素材。</div>
 
           <div class="video-box" data-bvid="BV1Zmgx6aEAA">
             <a class="video-cover" href="https://www.bilibili.com/video/BV1Zmgx6aEAA" target="_blank" rel="noopener">
@@ -778,14 +771,7 @@
             </a>
           </div>
 
-          <div class="stay"><span class="stay-tag">住哪里</span><b>平塘 · 天文小镇（克度镇）</b>
-            <ul>
-              <li><b>月星宸亲子民宿</b>（天文小镇内）：距天文体验馆步行约 200 米，星星主题房间正对娃的胃口，评分 9.0</li>
-              <li><b>平塘星辰天缘大酒店</b>（中国天眼店）：镇上的标准酒店，有亲子设施，想住「酒店感」选它</li>
-              <li>共同优点：第二天步行去天眼摆渡车站，不用早起赶路；小镇夜晚光污染少，适合观星</li>
-            </ul>
-            <span class="price-note">价格为平季参考，节假日请以预订平台实时为准</span>
-          </div>
+          <div class="stay"><span class="stay-tag">住哪里</span><b>同上，黄果树景区门口连住</b> —— 全天玩完步行回酒店，不赶路</div>
         </div>
       </div>
 
@@ -793,12 +779,12 @@
         <span class="dot"></span>
         <div class="card">
           <div class="topline">
-            <span class="dnum">D5</span>
-            <span class="tag gray">9/29 周二</span>
+            <span class="dnum">D4</span>
+            <span class="tag gray">9/28 周一</span>
             <span class="tag teal">工作日 · 科学日</span>
           </div>
-          <h3>中国天眼 FAST → 荔波</h3>
-          <div class="route">上午天眼景区 4–5h → 14:00 出发 → 荔波 约120km / 2h</div>
+          <h3>中国天眼 FAST · 平塘天文小镇</h3>
+          <div class="route">黄果树 → 平塘天文小镇 约230km / 3h，下午玩天眼</div>
 
           <div class="carousel" data-carousel>
             <div class="car-track">
@@ -808,10 +794,11 @@
           </div>
 
           <ul>
-            <li>看世界最大的 500 米口径射电望远镜，观景台俯瞰"大锅"全景</li>
+            <li>昨天玩了一整天瀑布，今早睡到自然醒再从容出发，中午抵达天文小镇</li>
+            <li>下午看世界最大的 500 米口径射电望远镜，观景台俯瞰"大锅"全景</li>
             <li>下山逛天文体验馆（VR、天象影院）+ 南仁东纪念馆（免费）</li>
             <li>789 级台阶带娃不用硬爬：坐二段直达车只爬约 100 级</li>
-            <li>傍晚到荔波，住小七孔东门附近，方便明早第一批入园</li>
+            <li>晚上天气好就在小镇肉眼观星 —— 这里光污染极少</li>
           </ul>
           <div class="kid">👧 <b>娃的研学日：</b>进的是电磁静默区，手机相机全寄存 —— 正好来一次"无屏幕"的专注科学体验。记得带 200+ 元现金（拍照、纪念品只收现金）。</div>
 
@@ -821,6 +808,35 @@
               <span><span class="v-tit">「中国天眼」科普短片</span><br><span class="v-sub">出发前陪娃看，现场更震撼 · 约 2 分钟</span></span>
             </a>
           </div>
+
+          <div class="stay"><span class="stay-tag">住哪里</span><b>平塘 · 天文小镇（克度镇）</b>
+            <ul>
+              <li><b>月星宸亲子民宿</b>（天文小镇内）：距天文体验馆步行约 200 米，星星主题房间正对娃的胃口，评分 9.0</li>
+              <li><b>平塘星辰天缘大酒店</b>（中国天眼店）：镇上的标准酒店，有亲子设施，想住「酒店感」选它</li>
+              <li>共同优点：玩完天眼步行回住处，不用摸黑赶路；小镇夜晚光污染少，适合观星</li>
+            </ul>
+            <span class="price-note">价格为平季参考，节假日请以预订平台实时为准</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day" data-scene="xiaoqikong">
+        <span class="dot"></span>
+        <div class="card">
+          <div class="topline">
+            <span class="dnum">D5</span>
+            <span class="tag gray">9/29 周二</span>
+            <span class="tag teal">工作日 · 轻松日</span>
+          </div>
+          <h3>瑶山古寨 → 荔波</h3>
+          <div class="route">平塘 → 荔波 约120km / 2h，下午瑶山古寨轻松逛</div>
+          <ul>
+            <li>上午自然醒出发，中午到荔波，先入住小七孔东门放行李</li>
+            <li>下午去<b>瑶山古寨</b>（距小七孔东门约 5km）：白裤瑶族原生态村落，看猴鼓舞、粘膏染、禾仓群，比商业古镇更有味道</li>
+            <li>喜欢山水也可以改去<b>大七孔</b>：天生桥 + 恐怖峡，2 小时轻松走完</li>
+            <li>晚上回风情小镇吃饭早休息，为明天的小七孔全天养足精神</li>
+          </ul>
+          <div class="kid">👧 <b>娃的文化日：</b>给娃讲讲白裤瑶的"两片瑶"服饰和陀螺文化 —— 这里的瑶族至今保留着自己的生活方式，不是表演出来的。</div>
 
           <div class="stay"><span class="stay-tag">住哪里</span><b>小七孔东门 · 梦柳布依风情小镇</b>（连住 2 晚）
             <ul>
@@ -960,7 +976,7 @@
     <div class="food-grid">
       <div class="food">
         <img src="assets/img/food-zhujiao.webp" alt="青岩卤猪脚" loading="lazy">
-        <div class="f-body"><h4>青岩卤猪脚</h4><p>状元蹄，十余种香料卤制，软糯酱香</p><span class="safe">不辣 · 娃超爱</span></div>
+        <div class="f-body"><h4>青岩卤猪脚</h4><p>状元蹄，十余种香料卤制，软糯酱香，贵阳市区也能吃到</p><span class="safe">不辣 · 娃超爱</span></div>
       </div>
       <div class="food">
         <img src="assets/img/food-gaoba.webp" alt="糕粑稀饭" loading="lazy">
@@ -1011,7 +1027,7 @@
         <ul class="pack-list">
           <li>防滑运动鞋（黄果树、小七孔湿滑路段多）</li>
           <li>娃的溯溪鞋/凉鞋 + 一套换洗衣物</li>
-          <li>分层穿衣：短袖 + 长袖 + 薄外套（早晚温差大）</li>
+          <li>分层穿衣：短袖 + 长袖 + 薄外套（早晚温差大，织金洞内 10–16°C 必备）</li>
           <li>轻便雨衣（水帘洞、小七孔都用得上，比雨伞好）</li>
           <li>现金 300–500 元（天眼静默区只收现金）</li>
           <li>防晒霜 + 驱蚊液 + 充电宝 + 手机防水袋</li>
@@ -1021,12 +1037,12 @@
       </div>
       <div class="panel">
         <h3>💰 预算估算（一家三口）</h3>
-        <div class="budget-row"><div class="lbl"><span>去程动卧 780×3 + 返程高铁 250×3</span><b>≈ 3,100 元</b></div><div class="bar"><i style="width:60%"></i></div></div>
-        <div class="budget-row"><div class="lbl"><span>租车 6 天 + 异地还车 + 油费过路费</span><b>≈ 3,500 元</b></div><div class="bar"><i style="width:68%"></i></div></div>
+        <div class="budget-row"><div class="lbl"><span>去程机票约 1000×3 + 返程高铁 250×3</span><b>≈ 3,800 元</b></div><div class="bar"><i style="width:74%"></i></div></div>
+        <div class="budget-row"><div class="lbl"><span>租车 7 天 + 异地还车 + 油费过路费</span><b>≈ 3,800 元</b></div><div class="bar"><i style="width:74%"></i></div></div>
         <div class="budget-row"><div class="lbl"><span>住宿 7 晚（苗寨国庆溢价）</span><b>≈ 4,000 元</b></div><div class="bar"><i style="width:78%"></i></div></div>
-        <div class="budget-row"><div class="lbl"><span>门票+观光车（娃多数免票）</span><b>≈ 1,500 元</b></div><div class="bar"><i style="width:30%"></i></div></div>
+        <div class="budget-row"><div class="lbl"><span>门票+观光车（娃多数免票）</span><b>≈ 1,700 元</b></div><div class="bar"><i style="width:34%"></i></div></div>
         <div class="budget-row"><div class="lbl"><span>餐饮 8 天</span><b>≈ 2,800 元</b></div><div class="bar"><i style="width:55%"></i></div></div>
-        <div class="budget-total">全程合计约 <b>1.4 – 1.6 万</b> 元</div>
+        <div class="budget-total">全程合计约 <b>1.5 – 1.7 万</b> 元</div>
       </div>
     </div>
   </div>
