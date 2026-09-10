@@ -127,6 +127,15 @@
     text-shadow:0 2px 18px rgba(250,245,234,.8);
   }
   .hero h1 .accent{color:var(--gold-deep)}
+  /* 朱砂印章 */
+  .hero .seal{
+    display:inline-block;vertical-align:top;margin:14px 0 0 16px;
+    background:linear-gradient(150deg,#c8492f,#a83a26);color:#fdf6ec;
+    font-family:'Noto Serif SC',serif;font-weight:900;font-size:15px;line-height:1.3;
+    width:2.7em;padding:7px 4px;text-align:center;border-radius:7px;
+    box-shadow:0 3px 10px rgba(168,58,38,.4), inset 0 0 0 1.5px rgba(253,246,236,.5);
+    transform:rotate(4deg);word-break:break-all;
+  }
   .hero .sub{
     margin:18px auto 0;max-width:620px;color:#4c4638;font-size:clamp(15px,2.4vw,18px);
     text-shadow:0 1px 10px rgba(250,245,234,.9);
@@ -152,6 +161,23 @@
   }
   .map-note{text-align:center;color:var(--ink-soft);font-size:13px;margin-bottom:10px}
   .map-svg{width:100%;height:auto;display:block}
+  /* 生成式山水舆图 + 精准地名标签 */
+  .map-art{
+    position:relative;border-radius:var(--radius-md);overflow:hidden;
+    border:1px solid rgba(29,58,110,.2);
+    box-shadow:0 8px 26px rgba(19,41,78,.16), inset 0 0 0 3px rgba(250,245,234,.5);
+  }
+  .map-art img{width:100%;display:block}
+  .map-lbl{
+    position:absolute;transform:translate(-50%,-50%);
+    background:rgba(250,245,234,.9);border:1.5px solid var(--indigo);
+    color:var(--indigo-deep);font-weight:700;border-radius:999px;
+    padding:2.5px 13px;font-size:14px;white-space:nowrap;line-height:1.35;
+    box-shadow:0 3px 10px rgba(19,41,78,.25);backdrop-filter:blur(2px);
+    text-align:center;
+  }
+  .map-lbl small{display:block;font-size:10.5px;font-weight:400;color:var(--ink-soft)}
+  .map-lbl.red{border-color:#b04230;color:#a03122}
   .map-legend{
     display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;
     font-size:13px;color:var(--ink-soft);padding:6px 0 18px;
@@ -170,10 +196,17 @@
     font-size:12px;letter-spacing:.4em;color:#0f6e63;
     text-transform:uppercase;margin-top:6px;
   }
+  /* 蜡染菱纹分隔饰 */
   .sec-head .bar{
-    width:52px;height:4px;border-radius:2px;margin:14px auto 0;
-    background:linear-gradient(90deg,var(--teal),var(--gold));
+    width:9px;height:9px;background:var(--gold);transform:rotate(45deg);
+    margin:16px auto 0;position:relative;border-radius:1.5px;
   }
+  .sec-head .bar::before,.sec-head .bar::after{
+    content:"";position:absolute;width:7px;height:7px;top:1px;
+    background:var(--teal);border-radius:1px;
+  }
+  .sec-head .bar::before{left:-17px}
+  .sec-head .bar::after{right:-17px}
 
   /* ============ 抢票倒计时 ============ */
   .urgent-grid{display:grid;gap:14px}
@@ -215,8 +248,10 @@
   .day:nth-child(odd){margin-left:0;margin-right:auto}
   .day:nth-child(even){margin-left:auto;margin-right:0}
   .day .dot{
-    position:absolute;top:26px;width:18px;height:18px;border-radius:50%;
-    background:#fff;border:5px solid var(--teal);z-index:2;
+    position:absolute;top:27px;width:15px;height:15px;border-radius:3px;
+    transform:rotate(45deg);
+    background:var(--paper);border:4px solid var(--teal);z-index:2;
+    box-shadow:0 2px 8px rgba(19,41,78,.25);
   }
   .day:nth-child(odd) .dot{right:-48px}
   .day:nth-child(even) .dot{left:-48px}
@@ -226,16 +261,27 @@
     background:rgba(250,245,234,.88);
     border-radius:var(--radius-lg);
     padding:24px 26px 20px;
-    box-shadow:0 10px 34px rgba(19,41,78,.13);
-    border:1px solid rgba(29,58,110,.12);
+    box-shadow:0 10px 34px rgba(19,41,78,.13), inset 0 0 0 3px rgba(29,58,110,.05);
+    border:1px solid rgba(29,58,110,.16);
     backdrop-filter:blur(8px);
     transition:transform .25s ease, box-shadow .25s ease;
+    position:relative;
+    overflow:hidden;
   }
-  .card:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(19,41,78,.2)}
+  /* 蜡染菱纹角饰 */
+  .card::after,.panel::after{
+    content:"";position:absolute;right:18px;bottom:16px;width:24px;height:24px;
+    border:2.5px solid var(--indigo);transform:rotate(45deg);opacity:.09;pointer-events:none;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(19,41,78,.2), inset 0 0 0 3px rgba(29,58,110,.05)}
   .card .topline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
+  /* 印章式日签 */
   .dnum{
-    font-family:'ZCOOL KuaiLe',cursive;font-size:15px;color:#fff;
-    background:var(--indigo);border-radius:9px;padding:3px 11px;
+    font-family:'Noto Serif SC',serif;font-weight:900;font-size:15px;color:#fdf6ec;
+    background:linear-gradient(150deg,#c8492f,#a83a26);
+    border-radius:6px;padding:3px 10px;
+    box-shadow:0 2px 6px rgba(168,58,38,.35), inset 0 0 0 1.5px rgba(253,246,236,.45);
+    transform:rotate(-2deg);letter-spacing:.05em;
   }
   .tag{font-size:12px;border-radius:999px;padding:2.5px 12px;font-weight:500}
   .tag.gold{background:var(--gold-soft);color:#9a6716;border:1px solid #f0d9ae}
@@ -248,10 +294,11 @@
   }
   .card .route{font-size:13px;color:var(--teal);font-weight:700;margin-bottom:12px}
   .card ul{list-style:none;font-size:14.5px;color:#453e33}
-  .card ul li{padding-left:18px;position:relative;margin-bottom:7px}
+  .card ul li{padding-left:19px;position:relative;margin-bottom:7px}
   .card ul li::before{
-    content:"";position:absolute;left:0;top:.72em;width:7px;height:7px;
-    border-radius:50%;background:var(--gold);
+    content:"";position:absolute;left:1px;top:.68em;width:7px;height:7px;
+    border-radius:1.5px;transform:rotate(45deg);background:var(--gold);
+    box-shadow:inset 0 0 0 1.5px rgba(250,245,234,.6);
   }
   .card .kid{
     margin-top:14px;background:rgba(227,244,241,.9);border-radius:var(--radius-md);
@@ -394,6 +441,8 @@
     .two-col{grid-template-columns:1fr}
     .urgent-item{flex-direction:row}
     .car-track img{height:180px}
+    .map-lbl{font-size:11.5px;padding:1.5px 9px}
+    .map-lbl small{display:none}
   }
 </style>
 </head>
@@ -415,7 +464,7 @@
 <header class="hero" data-scene="qianling">
   <div class="hero-inner">
     <span class="kicker">2026 中秋 × 国庆 · 一家三口</span>
-    <h1>「<span class="accent">黔</span>」行记</h1>
+    <h1>「<span class="accent">黔</span>」行记<span class="seal">自在黔行</span></h1>
     <p class="sub">带上 10 岁的小探险家，从北京的夜班动卧出发 ——<br>瀑布、天眼、碧水、苗寨灯火，8 天慢游贵州</p>
     <div class="chips">
       <span class="chip">🗓 <b>9.25 – 10.2</b> 共 8 天</span>
@@ -427,57 +476,16 @@
 
   <!-- 路线地图 -->
   <div class="map-card">
-    <div class="map-title">环 线 路 线 图</div>
+    <div class="map-title">山 水 行 旅 图</div>
     <div class="map-note">贵阳进、凯里出，一条线不走回头路 · 图片可左右滑动，视频点击即播 · 向下滚动，画卷随行程流转</div>
-    <svg class="map-svg" viewBox="0 0 860 400" role="img" aria-label="贵州环线示意图">
-      <!-- 山峦背景 -->
-      <path d="M0,360 L90,300 L170,345 L260,285 L350,340 L450,290 L560,350 L650,295 L760,345 L860,305 L860,400 L0,400 Z" fill="#e8edf7"/>
-      <path d="M0,380 L120,330 L230,372 L340,322 L470,375 L590,328 L720,375 L860,335 L860,400 L0,400 Z" fill="#dbe4f2"/>
-      <!-- 路线 -->
-      <path id="routePath" d="M430,120 C330,100 230,120 185,168 C150,205 200,250 300,268 C360,279 470,296 555,300 C650,304 690,240 655,168 C630,115 520,98 430,120 Z"
-        fill="none" stroke="#1f9e8f" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 9"/>
-      <!-- 节点 -->
-      <g font-family="Noto Sans SC, sans-serif" text-anchor="middle">
-        <g>
-          <circle cx="430" cy="120" r="13" fill="#1d3a6e"/>
-          <circle cx="430" cy="120" r="6" fill="#faf5ea"/>
-          <text x="430" y="95" font-size="19" font-weight="700" fill="#1d3a6e">贵阳</text>
-          <text x="430" y="152" font-size="12.5" fill="#6b6353">D1–D2 · 黔灵山 / 青岩</text>
-        </g>
-        <g>
-          <circle cx="185" cy="168" r="12" fill="#1f9e8f"/>
-          <circle cx="185" cy="168" r="5.5" fill="#faf5ea"/>
-          <text x="150" y="146" font-size="18" font-weight="700" fill="#0f6e63">黄果树</text>
-          <text x="130" y="196" font-size="12.5" fill="#6b6353">D3–D4 · 大瀑布</text>
-        </g>
-        <g>
-          <circle cx="320" cy="270" r="12" fill="#1f9e8f"/>
-          <circle cx="320" cy="270" r="5.5" fill="#faf5ea"/>
-          <text x="320" y="250" font-size="18" font-weight="700" fill="#0f6e63">平塘天眼</text>
-          <text x="320" y="300" font-size="12.5" fill="#6b6353">D4–D5 · FAST</text>
-        </g>
-        <g>
-          <circle cx="560" cy="300" r="12" fill="#1f9e8f"/>
-          <circle cx="560" cy="300" r="5.5" fill="#faf5ea"/>
-          <text x="575" y="330" font-size="18" font-weight="700" fill="#0f6e63">荔波小七孔</text>
-          <text x="565" y="282" font-size="12.5" fill="#6b6353">D5–D6</text>
-        </g>
-        <g>
-          <circle cx="655" cy="168" r="12" fill="#d2503c"/>
-          <circle cx="655" cy="168" r="5.5" fill="#faf5ea"/>
-          <text x="680" y="146" font-size="18" font-weight="700" fill="#a03122">西江苗寨</text>
-          <text x="688" y="196" font-size="12.5" fill="#6b6353">D7 · 万家灯火</text>
-        </g>
-        <!-- 里程标注 -->
-        <g font-size="12" fill="#8a8168">
-          <text x="300" y="105">约130km / 2h</text>
-          <text x="205" y="228">约230km / 3h</text>
-          <text x="440" y="296">约120km / 2h</text>
-          <text x="640" y="248">约200km / 3h</text>
-          <text x="560" y="105">凯里南还车 → 高铁约2h 直达娄底南</text>
-        </g>
-      </g>
-    </svg>
+    <div class="map-art">
+      <img src="assets/bg/map-route.jpg" alt="贵州环线手绘山水地图：贵阳、黄果树、平塘天眼、荔波小七孔、西江苗寨">
+      <span class="map-lbl" style="left:52%;top:14%">贵阳<small>D1–D2 · 黔灵山 / 青岩</small></span>
+      <span class="map-lbl" style="left:13%;top:26%">黄果树<small>D3–D4 · 大瀑布</small></span>
+      <span class="map-lbl" style="left:23%;top:64%">平塘天眼<small>D4–D5 · FAST</small></span>
+      <span class="map-lbl" style="left:63%;top:72%">荔波小七孔<small>D5–D6</small></span>
+      <span class="map-lbl red" style="left:84%;top:38%">西江苗寨<small>D7 · 万家灯火</small></span>
+    </div>
     <div class="map-legend">
       <span><i style="background:#e9a13b"></i>9/25–27 中秋假 · 市内+周边</span>
       <span><i style="background:#1f9e8f"></i>9/28–30 工作日 · 重头戏</span>
@@ -977,17 +985,21 @@ if (forced){
   document.querySelectorAll('[data-scene]').forEach(function(el){ io.observe(el); });
 }
 
-/* ========== 轻微视差：画卷随滚动缓缓上移 ========== */
+/* ========== 轻微视差：画卷随滚动缓缓上移（位移钳制在出血余量内，杜绝露白） ========== */
 var ticking = false;
 window.addEventListener('scroll', function(){
   if (ticking) return;
   ticking = true;
   requestAnimationFrame(function(){
-    var y = window.scrollY * 0.035;
+    var maxShift = window.innerHeight * 0.04;   /* inset:-5% 的出血余量内 */
+    var y = Math.min(window.scrollY * 0.02, maxShift);
     sceneEls.forEach(function(d){ d.style.transform = 'translateY(' + y + 'px)'; });
     ticking = false;
   });
 }, {passive: true});
+/* 调试/深链：?scroll=2000 可直接滚到指定位置 */
+var qsScroll = (location.search.match(/scroll=(\d+)/) || [])[1];
+if (qsScroll) setTimeout(function(){ window.scrollTo(0, parseInt(qsScroll, 10)); }, 300);
 
 /* ========== 氛围粒子：每个场景有自己的「天气」 ========== */
 (function(){
